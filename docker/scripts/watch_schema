@@ -1,0 +1,13 @@
+#!/bin/bash
+
+command -v inotifywait
+
+./seed
+
+inotifywait -q -m -e close_write \
+    --format %e \
+    ../db/schema/schema.sql |
+
+while read events; do
+    ./seed
+done

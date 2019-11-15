@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it -w /tasks scaledger-db psql -U scaledger scaledger

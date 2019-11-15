@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec -e PGOPTIONS=--search_path=public -w /tasks/scripts scaledger-db ./schema
+echo 'schema rebuilt'

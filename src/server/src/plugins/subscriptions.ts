@@ -31,7 +31,7 @@ export default makeExtendSchemaPlugin(({ pgSql: sql }) => ({
       ) {
         console.log('lol')
         const rows = await selectGraphQLResultFromTable(
-          sql.fragment`pythia_public.postings`,
+          sql.fragment`scaledger_public.postings`,
           (_tableAlias, sqlBuilder) => {
             sqlBuilder.where(
               sql.fragment`${sqlBuilder.getTableAlias()}.id = ${sql.value(

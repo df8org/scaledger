@@ -4,7 +4,7 @@
 
 begin;
 
-drop schema if exists public, pythia_public, pythia_hidden, pythia_private cascade;
+drop schema if exists public, scaledger_public, scaledger_hidden, scaledger_private cascade;
 drop role if exists anonymous;
 drop role if exists signed_in;
 

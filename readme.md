@@ -1,5 +1,7 @@
 # Scaledger
 
+[![pipeline status](https://gitlab.com/df8org/scaledger/badges/master/pipeline.svg)](https://gitlab.com/df8org/scaledger/commits/master)
+
 A double-entry accounting database with a typed GraphQL API, supporting:
 
 - Immutable entries 

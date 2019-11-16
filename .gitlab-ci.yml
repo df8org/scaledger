@@ -11,9 +11,9 @@ services:
 - name: docker:19.03.1-dind
 
 variables:
-  POSTGRES_USER: pythia
+  POSTGRES_USER: scaledger
   POSTGRES_PASSWORD: ""
-  POSTGRES_DB: pythia
+  POSTGRES_DB: scaledger
   POSTGRES_HOST: db
 
 stages:
@@ -32,8 +32,8 @@ server-build:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - cd src/server
   script:
-    - docker build --pull --cache-from $CI_REGISTRY_IMAGE/pythia-server:latest -t $CI_REGISTRY_IMAGE/pythia-server:$CI_COMMIT_REF_SLUG .
-    - docker push $CI_REGISTRY_IMAGE/pythia-server:$CI_COMMIT_REF_SLUG
+    - docker build --pull --cache-from $CI_REGISTRY_IMAGE/scaledger-server:latest -t $CI_REGISTRY_IMAGE/scaledger-server:$CI_COMMIT_REF_SLUG .
+    - docker push $CI_REGISTRY_IMAGE/scaledger-server:$CI_COMMIT_REF_SLUG
 
 server-release:
   stage: release
@@ -41,9 +41,9 @@ server-release:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - cd src/server
   script:
-    - docker pull $CI_REGISTRY_IMAGE/pythia-server:$CI_COMMIT_REF_SLUG
-    - docker tag $CI_REGISTRY_IMAGE/pythia-server:$CI_COMMIT_REF_SLUG $CI_REGISTRY_IMAGE/pythia-server:latest
-    - docker push $CI_REGISTRY_IMAGE/pythia-server:latest
+    - docker pull $CI_REGISTRY_IMAGE/scaledger-server:$CI_COMMIT_REF_SLUG
+    - docker tag $CI_REGISTRY_IMAGE/scaledger-server:$CI_COMMIT_REF_SLUG $CI_REGISTRY_IMAGE/scaledger-server:latest
+    - docker push $CI_REGISTRY_IMAGE/scaledger-server:latest
   only:
     - master
 
@@ -57,22 +57,3 @@ db:
   script:
     - ./schema
     - ./seed
-
-# pages:
-#   stage: deploy
-#   image: node:10
-#   before_script:
-#     - cd src/website
-#     - npm install
-#   script:
-#     - npm run build
-#     - mkdir ../../public
-#     - mv dist ../../public
-#     - mv preview ../../public
-#     - mv index.html ../../public
-#     - mv robots.txt ../../public
-#   artifacts:
-#     paths:
-#     - public
-#   only:
-#   - master

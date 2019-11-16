@@ -1,8 +1,8 @@
 #!/bin/bash
 
 POSTGRES_HOST="${POSTGRES_HOST:-localhost}"
-POSTGRES_USER="${POSTGRES_USER:-pythia}"
-POSTGRES_DB="${POSTGRES_DB:-pythia}"
+POSTGRES_USER="${POSTGRES_USER:-scaledger}"
+POSTGRES_DB="${POSTGRES_DB:-scaledger}"
 
 echo 'building schema'
 

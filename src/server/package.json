@@ -1,8 +1,8 @@
 {
-  "name": "pythia",
+  "name": "scaledger",
   "version": "1.0.0",
   "description": "A radically minimal double entry accounting system built with Postgresql, inspired by ledger",
-  "repository": "https://gitlab.com/df8org/pythia",
+  "repository": "https://gitlab.com/df8org/scaledger",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -12,20 +12,14 @@
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^5.0.0-beta.1",
     "@graphile/pg-pubsub": "^4.4.5",
-    "connect-pg-simple": "^6.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
     "graphile-utils": "^4.4.5",
-    "jsonwebtoken": "^8.5.1",
-    "passport": "^0.4.0",
     "postgraphile": "^4.4.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/node": "^12.12.7",
-    "@types/passport": "^1.0.1",
-    "@types/pg": "^7.11.2",
     "typescript": "^3.7.2"
   }
 }

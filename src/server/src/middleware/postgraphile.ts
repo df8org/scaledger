@@ -3,7 +3,7 @@ import simplifyInflector from "@graphile-contrib/pg-simplify-inflector";
 import forceBigInt from "../plugins/force-big-int";
 import e from "express";
 import subscriptions from "../plugins/subscriptions";
-const { default: PgPubsub } = require("@graphile/pg-pubsub")
+import PgPubsub from "@graphile/pg-pubsub";
 
 const pluginHook = makePluginHook([PgPubsub]);
 
@@ -26,7 +26,7 @@ const postgraphileOptions = (app: e.Application) => {
 export default async (app: e.Application) => {  
   app.use(postgraphile(
     process.env.DATABASE_URL,
-    "pythia_public",
+    "scaledger_public",
     postgraphileOptions(app)
   ));
 };

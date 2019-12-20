@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^5.0.0-beta.1",
-    "@graphile/pg-pubsub": "^4.4.5",
+    "@graphile/pg-pubsub": "^4.5.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "graphile-utils": "^4.4.5",
-    "postgraphile": "^4.4.4"
+    "graphile-utils": "^4.5.6",
+    "postgraphile": "^4.5.5"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
-    "@types/node": "^12.12.7",
-    "typescript": "^3.7.2"
+    "@types/node": "^12.12.21",
+    "typescript": "^3.7.3"
   }
 }

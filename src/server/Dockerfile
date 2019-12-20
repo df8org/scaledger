@@ -20,7 +20,7 @@ RUN npm install --production=false --no-progress
 COPY src/ /app/src
 
 # Run the build
-COPY tsconfig.json /app/
+COPY tsconfig.json postgraphile.tags.json5 /app/
 RUN npm run build
 
 ################################################################################
@@ -31,7 +31,7 @@ FROM node:12-alpine as clean
 ARG NODE_ENV
 
 # Copy over selectively just the tings we need, try and avoid the rest
-COPY --from=builder /app/package.json /app/package-lock.json /app/
+COPY --from=builder /app/package.json /app/package-lock.json /app/postgraphile.tags.json5 /app/
 COPY --from=builder /app/dist/ /app/dist/
 
 ################################################################################

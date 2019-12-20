@@ -1,4 +1,5 @@
 import { postgraphile, makePluginHook } from "postgraphile";
+import { TagsFilePlugin } from "postgraphile/plugins";
 import simplifyInflector from "@graphile-contrib/pg-simplify-inflector";
 import forceBigInt from "../plugins/force-big-int";
 import e from "express";
@@ -9,7 +10,7 @@ const pluginHook = makePluginHook([PgPubsub]);
 
 const postgraphileOptions = (app: e.Application) => {
   return {
-    appendPlugins: [simplifyInflector, forceBigInt, subscriptions],
+    appendPlugins: [simplifyInflector, forceBigInt, subscriptions, TagsFilePlugin],
     watchPg: true,
     dynamicJson: true,
     enhanceGraphiql: true,

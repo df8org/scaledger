@@ -2,7 +2,8 @@ version: '3.1'
 services:
   db:
     container_name: scaledger-db
-    image: postgres:11.5-alpine
+    
+    image: postgres:11.6-alpine
     ports:
       - '5432:5432'
     volumes:
@@ -14,6 +15,8 @@ services:
       POSTGRES_DB: scaledger
   server:
     container_name: scaledger-server
+    build:
+      context: ../src/server
     image: scaledger-server:latest
     ports:
       - 5000:5000

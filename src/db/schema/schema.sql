@@ -68,7 +68,7 @@ create table scaledger_public.accounts (
   updated_at       timestamp default now(),
   type             scaledger_public.account_type not null,
   name             text not null check (char_length(name) < 255),
-  code             text check (char_length(name) < 255),
+  code             text,
   metadata         jsonb
 );
 
@@ -79,10 +79,10 @@ create trigger account_updated_at before update
   for each row
   execute procedure scaledger_private.set_updated_at();
 
-comment on table scaledger_public.accounts is E'@omit delete\nAn account to which every posting belongs';
-comment on column scaledger_public.accounts.id is E'@omit create,update\nThe primary unique identifier for the account';
-comment on column scaledger_public.accounts.created_at is E'@omit create,update\nThe account’s time created';
-comment on column scaledger_public.accounts.updated_at is E'@omit create,update\nThe account’s last updated time';
+comment on table scaledger_public.accounts is 'An account to which every posting belongs';
+comment on column scaledger_public.accounts.id is 'The primary unique identifier for the account';
+comment on column scaledger_public.accounts.created_at is 'The account’s time created';
+comment on column scaledger_public.accounts.updated_at is 'The account’s last updated time';
 comment on column scaledger_public.accounts.type is 'The account’s type';
 comment on column scaledger_public.accounts.name is 'The account’s name';
 comment on column scaledger_public.accounts.code is 'An alphanumeric account code to identify the account';
@@ -115,24 +115,12 @@ create trigger posting_created
     'graphql:posting'   -- "topic"
   );
 
-
--- @TODO create a role that allows only inserts
--- @comment postings cannot be mutated
--- grant select, insert on table scaledger_public.postings to signed_in;
-
--- alter table scaledger_public.postings enable row level security;
-
--- @comment always allow the insertion
--- create policy insert_postings on scaledger_public.postings for insert with check (true);
--- create policy select_postings on scaledger_public.postings for select
---   using (user_id = scaledger_public.current_user_id());
-
-comment on table scaledger_public.postings is E'@omit update,delete\nA record of a credit/debt (amount) on an account';
-comment on column scaledger_public.postings.id is E'@omit create,update\nThe primary unique identifier for the posting';
+comment on table scaledger_public.postings is 'A record of a credit/debt (amount) on an account';
+comment on column scaledger_public.postings.id is 'The primary unique identifier for the posting';
 comment on column scaledger_public.postings.credit_id is 'The account to which the amount is credited';
 comment on column scaledger_public.postings.debit_id is 'The account to which the amount is debited';
 comment on column scaledger_public.postings.currency is 'The currency the amount is denominated in';
-comment on column scaledger_public.postings.created_at is E'@omit create\nThe posting’s time created';
+comment on column scaledger_public.postings.created_at is 'The posting’s time created';
 comment on column scaledger_public.postings.amount is 'The amount (credit/debit) applied in the transaction';
 comment on column scaledger_public.postings.metadata is 'A dictionary of arbitrary key-values';
 

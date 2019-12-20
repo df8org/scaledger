@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd ../src/server
-docker build -t scaledger-server:latest .

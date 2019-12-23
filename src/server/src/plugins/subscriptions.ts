@@ -29,7 +29,6 @@ export default makeExtendSchemaPlugin(({ pgSql: sql }) => ({
         _context,
         { graphile: { selectGraphQLResultFromTable } }
       ) {
-        console.log('lol')
         const rows = await selectGraphQLResultFromTable(
           sql.fragment`scaledger_public.postings`,
           (_tableAlias, sqlBuilder) => {

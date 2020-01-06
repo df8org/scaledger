@@ -1,0 +1,5 @@
+node_modules/
+ops/
+
+src/server/.env
+src/server/dist
